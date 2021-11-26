@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, inital-scale=1">
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <title>POST</title>
+    </head>
+    <body>
+        <div class="w3-top">
+            <div class="w3-bar w3-dark-grey">
+                <a href="/home" class="w3-bar-item w3-button"><i class="fa fa-home"></i></a>
+                <a href="/insert" class="w3-bar-item w3-button"><i class="fa fa-plus-square"></i></a>
+                <a href="/edit" class="w3-bar-item w3-button">수정</a>
+                <a href="/del" class="w3-bar-item w3-button"><i class="fa fa-trash"></i></a>
+                <a href="/list" class="w3-bar-item w3-button">명단</a>
+            </div>
+        </div>
+        <br><br>
+        <div class="w3-header w3-center">
+            <h2>회원정보삭제</h2>
+        </div>
+        <div class="w3-table w3-cyan w3-center">
+            <form method="post">
+                <div class="w3-center w3-text-white"><h3>삭제할 회원의 번호를 입력하세요</h3></div>
+                <table align="center">
+                    <tr>
+                        <td><label>회원의 번호</label></td>
+                        <td><input type="text" name="id"></td>
+                    </tr>
+                    <tr>
+                        <td></td><td><input type="submit" class="w3-button w3-round-xxlarge w3-red w3-block" value="삭 제 !!"></td>
+                    </tr>
+                    <tr></tr>
+                </table>
+            </form>
+        </div>
+        <table class="w3-table-all">
+            <thead>
+                <tr class="w3-blue">
+                    <th>번호</th><th>성명</th><th>거주지</th><th>생년월일</th>
+                </tr>
+            </thead>
+            <% for(var i = 0; i < Edata.length; i++) { %>
+                <tr>
+                    <td>[<%= Edata[i].id %>] </td>
+                    <td><%= Edata[i].name %></td>
+                    <td><%= Edata[i].region %></td>
+                    <td><%= Edata[i].birthday %></td>
+                </tr>
+            <% } %>
+        </table>
+    </body>
+</html>
