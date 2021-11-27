@@ -52,13 +52,13 @@ app.listen(8080, () => {console.log('Server Running at http://localhost:8080')})
 
 //라우팅
 
-app.get('/home', (req, res) => {
+app.get('./home', (req, res) => {
     fs.readFile('index.html', 'utf8', (err, data) => {
         res.send(data.toString());
     })
 });
 
-app.get('/list', (req, res) => {
+app.get('./list', (req, res) => {
     fs.readFile('LIST.ejs', 'utf8', (err, data) => {
         res.send(ejs.render(data.toString(), {
             Edata : DummyDB.get()
@@ -74,7 +74,7 @@ app.get('/', (req, res) => {
 
 //자료 입력
 
-app.get('/insert', (req, res) => {
+app.get('./insert', (req, res) => {
     fs.readFile('POST.ejs', 'utf8', (err, data) => {
         res.send(ejs.render(data.toString(), {
             Edata : DummyDB.get()
@@ -82,7 +82,7 @@ app.get('/insert', (req, res) => {
     })
 });
 
-app.post('/insert', (req, res) => {
+app.post('./insert', (req, res) => {
     var name = req.body.name;
     var region = req.body.region;
     var birthday = req.body.birthday;
@@ -93,20 +93,20 @@ app.post('/insert', (req, res) => {
     } else {
         throw new Error('error!');
     }
-   res.redirect('/insert');
+   res.redirect('./insert');
 });
 
 //자료 수정
 
-app.get('/edit', (req, res) => {
-    fs.readFile('EDIT.ejs', 'utf8', (err, data) => {
+app.get('./edit', (req, res) => {
+    fs.readFile('./EDIT.ejs', 'utf8', (err, data) => {
         res.send(ejs.render(data.toString(), {
             Edata : DummyDB.get()
         }));
     })
 });
 
-app.post('/edit', (req, res) => {
+app.post('./edit', (req, res) => {
     var Edata = DummyDB.get();
     var id = req.body.id;
     var name = req.body.name;
@@ -118,7 +118,7 @@ app.post('/edit', (req, res) => {
             element.name = name;
             element.region = region;
             console.log(element.id);
-            res.redirect('/edit');
+            res.redirect('./edit');
         }
     });
 });
