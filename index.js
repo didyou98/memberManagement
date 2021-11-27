@@ -54,31 +54,37 @@ app.listen(process.env.PORT || 3000, function(){
 
 //라우팅
 
-app.get('./home', (req, res) => {
-    fs.readFile('index.html', 'utf8', (err, data) => {
+app.get('/home', (req, res) => {
+    fs.readFile('./index.html', 'utf8', (err, data) => {
         res.send(data.toString());
     })
 });
 
-app.get('./list', (req, res) => {
-    fs.readFile('LIST.ejs', 'utf8', (err, data) => {
+app.get('/list', (req, res) => {
+    fs.readFile('./LIST.ejs', 'utf8', (err, data) => {
         res.send(ejs.render(data.toString(), {
             Edata : DummyDB.get()
         }));
+    })
+});
+
+app.get('/', (req, res) => {
+    fs.readFile('./index.html', 'utf8', (err, data) => {
+        res.send(data.toString());
     })
 });
 
 //자료 입력
 
-app.get('./insert', (req, res) => {
-    fs.readFile('POST.ejs', 'utf8', (err, data) => {
+app.get('/insert', (req, res) => {
+    fs.readFile('./POST.ejs', 'utf8', (err, data) => {
         res.send(ejs.render(data.toString(), {
             Edata : DummyDB.get()
         }));
     })
 });
 
-app.post('./insert', (req, res) => {
+app.post('/insert', (req, res) => {
     var name = req.body.name;
     var region = req.body.region;
     var birthday = req.body.birthday;
@@ -89,12 +95,12 @@ app.post('./insert', (req, res) => {
     } else {
         throw new Error('error!');
     }
-   res.redirect('./insert');
+   res.redirect('/insert');
 });
 
 //자료 수정
 
-app.get('./edit', (req, res) => {
+app.get('/edit', (req, res) => {
     fs.readFile('./EDIT.ejs', 'utf8', (err, data) => {
         res.send(ejs.render(data.toString(), {
             Edata : DummyDB.get()
@@ -102,7 +108,7 @@ app.get('./edit', (req, res) => {
     })
 });
 
-app.post('./edit', (req, res) => {
+app.post('/edit', (req, res) => {
     var Edata = DummyDB.get();
     var id = req.body.id;
     var name = req.body.name;
@@ -114,7 +120,7 @@ app.post('./edit', (req, res) => {
             element.name = name;
             element.region = region;
             console.log(element.id);
-            res.redirect('./edit');
+            res.redirect('/edit');
         }
     });
 });
@@ -122,7 +128,7 @@ app.post('./edit', (req, res) => {
 //자료 삭제
 
 app.get('/del', (req, res) => {
-    fs.readFile('DELETE.ejs', 'utf8', (err, data) => {
+    fs.readFile('./DELETE.ejs', 'utf8', (err, data) => {
         res.send(ejs.render(data.toString(), {
             Edata : DummyDB.get()
         }));
