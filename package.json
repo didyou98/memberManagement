@@ -5,10 +5,7 @@
   "main": "index.js",
   "homepage" : "https://didyou98.github.io/memberMangement/",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build" : "webpack",
-    "predeploy" : "npm run build",
-    "deploy" : "gh-pages -d build"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
