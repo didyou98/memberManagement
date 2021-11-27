@@ -66,12 +66,6 @@ app.get('./list', (req, res) => {
     })
 });
 
-app.get('/', (req, res) => {
-    fs.readFile('index.html', 'utf8', (err, data) => {
-        res.send(data.toString());
-    })
-});
-
 //자료 입력
 
 app.get('./insert', (req, res) => {
