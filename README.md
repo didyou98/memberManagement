@@ -1,3 +1,6 @@
 # memberManagement
 
-https://mighty-brook-64710.herokuapp.com/home
+## 배포 heroku
+
+- https://mighty-brook-64710.herokuapp.com/home
+
